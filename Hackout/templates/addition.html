@@ -1,0 +1,253 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sign Up</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: "Poppins", sans-serif;
+        }
+
+        body {
+            background-color: ivory;
+            /* Sets the ivory color as the base background */
+            background-image: url('./images/Group 1.png');
+            /* mix-blend-mode: multiply; */
+            /* Adds the image on top */
+            background-size: cover;
+            /* Ensures the background image covers the entire container */
+            background-position: center;
+            /* Centers the image */
+            background-repeat: no-repeat;
+            /* Prevents repeating of the image */
+            min-height: 100vh;
+            /* Ensures the body element covers the entire viewport height */
+            margin: 0;
+            /* Removes default margin */
+            padding: 0;
+            /* Removes default padding */
+        }
+
+        .container {
+            background: #fff;
+            width: 450px;
+            padding: 1.5rem;
+            margin: 50px auto;
+            border-radius: 10px;
+            box-shadow: 0 20px 35px rgba(0, 0, 1, 0.9);
+            margin-bottom: 30px;
+            /* Increased space between containers */
+        }
+
+        .form-title {
+            font-size: 1.5rem;
+            font-weight: bold;
+            text-align: center;
+            padding: 1.3rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .input-group {
+            padding: 5% 0;
+            position: relative;
+        }
+
+        .input-group i {
+            position: absolute;
+            color: black;
+        }
+
+        input {
+            color: inherit;
+            width: 100%;
+            background-color: transparent;
+            border: none;
+            border-bottom: 1px solid #757575;
+            padding-left: 2.5rem;
+            /* Adjust padding for icon */
+            font-size: 15px;
+            transition: border-bottom 0.3s;
+        }
+
+        input:focus {
+            outline: none;
+            border-bottom: 2px solid hsl(327, 90%, 28%);
+        }
+
+        label {
+            color: #757575;
+            position: absolute;
+            left: 2.5rem;
+            /* Adjust left for label position */
+            top: 40%;
+            transform: translateY(-40%);
+            pointer-events: none;
+            transition: all 0.3s ease;
+        }
+
+        input:focus~label,
+        input:not(:placeholder-shown)~label {
+            top: -1rem;
+            left: 2.5rem;
+            /* Adjust left for label position */
+            color: hsl(327, 90%, 28%);
+            font-size: 12px;
+            opacity: 0;
+        }
+
+
+
+
+        button {
+            font-size: 1.1rem;
+            padding: 8px 0;
+            border-radius: 5px;
+            outline: none;
+            border: none;
+            width: 100%;
+            background: #0FC80F;
+            color: white;
+            cursor: pointer;
+            transition: 0.9s;
+        }
+
+        button:hover {
+            background: #07001f;
+        }
+
+        .links {
+            display: flex;
+            justify-content: space-around;
+            padding: 0 3rem;
+            margin-top: 1.5rem;
+            font-weight: bold;
+        }
+
+
+        .input-group {
+            position: relative;
+        }
+
+        input[type="date"] {
+            position: relative;
+            z-index: 1;
+            background: transparent;
+            color: transparent;
+            /* Hide the text by default */
+        }
+
+        input[type="date"]:focus {
+            color: black;
+            /* Make the text visible on focus */
+        }
+
+        input[type="date"]:focus+.date-label,
+        input[type="date"]:valid+.date-label {
+            display: none;
+            /* Hide the label when the input is focused or valid */
+        }
+
+        .date-label {
+            position: absolute;
+            left: 1.5rem;
+            top: 50%;
+            transform: translateY(-50%);
+            color: grey;
+            z-index: 0;
+            pointer-events: none;
+        }
+
+
+        #signInButton {
+            color: rgb(125, 125, 235);
+            border: none;
+            background-color: transparent;
+            font-size: 1rem;
+            font-weight: bold;
+            cursor: pointer;
+        }
+
+        #signInButton:hover {
+            text-decoration: underline;
+            color: blue;
+        }
+
+        .already {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+        }
+
+        .messageDiv {
+            background-color: hsl(327, 90%, 28%);
+            color: white;
+            padding: 10px 20px;
+            margin: 10px;
+            border-radius: 5px;
+            font-size: 1rem;
+            opacity: 0;
+            animation: fadeOut 7s forwards;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <h1 class="form-title">Crop Listing</h1>
+
+        <form method="post" action="">
+            {% csrf_token %}
+            <!-- <div id="signUpMessage" class="messageDiv" style="display:none;"></div>
+            <div class="input-group">
+                <i class="fas fa-briefcase"></i>
+                <input type="text" id="profession" placeholder=" " required name="profession">
+                <label for="profession">Profession</label>
+            </div> -->
+            <div class="input-group">
+                <i class="fas fa-user"></i>
+                <input type="text" id="lName" placeholder=" " required name="crop_name">
+                <label for="lName">Crop Name</label>
+            </div>
+            <div class="input-group">
+                <i class="fas fa-envelope"></i>
+                <input type="text" id="email" placeholder=" " required name="quantity">
+                <label for="quantity">Quantity of Crop</label>
+            </div>
+            <div class="input-group">
+                <i class="fas fa-user"></i>
+                <input type="text" placeholder=" " required name="due_date">
+                <label for="lName">Due Date of the Crop</label>
+            </div>
+
+
+            <div class="input-group">
+                <i class="fas fa-briefcase"></i>
+                <input type="text" id="profession" placeholder=" " required name="address">
+                <label for="profession">Address</label>
+            </div>
+            <div class="input-group">
+                <i class="fas fa-phone"></i>
+                <input type="tel" id="phone" placeholder=" " required name="phone_number">
+                <label for="phone">Phone Number</label>
+            </div>
+            <button class="btn" id="submitSignUp" name="signupbtn">Enter</button>
+        </form>
+        <!-- <div class="links">
+            <div class="already">
+                <p>Already have an account?</p>
+            </div>
+            <form method="get" action="{% url 'login_view' %}">
+                <button id="signInButton" name="signinbtn">Sign In</button>
+            </form>
+        </div> -->
+    </div>
+</body>
+
+</html>
